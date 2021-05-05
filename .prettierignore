@@ -1,0 +1,6 @@
+.next
+coverage
+build
+package.json
+tsconfig.json
+next-env.d.ts
