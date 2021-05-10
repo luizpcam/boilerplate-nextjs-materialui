@@ -19,7 +19,9 @@
       "@components/*": ["src/components/*"],
       "@helpers/*": ["src/helpers/*"],
       "@services/*": ["src/services/*"],
-      "@theme/*": ["src/theme/*"],
+      "@slices/*": ["src/redux/slices/*"],
+      "@store/*": ["src/redux/*"],
+      "@theme/*": ["src/theme/*"],  
       "@types/*": ["src/types/*"]
     }
   },

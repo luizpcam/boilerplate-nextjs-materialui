@@ -4,6 +4,10 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import theme from '@theme/index'
 import { useEffect } from 'react'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from '@store/store'
+
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   // removendo css styles do server (sujeira no codigo)
   useEffect(() => {
@@ -21,10 +25,14 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </PersistGate>
+      </Provider>
     </>
   )
 }
